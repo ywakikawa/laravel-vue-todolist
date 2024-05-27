@@ -10,7 +10,7 @@ services:
       - ./laravel-app/:/var/www/laravel-app
     ports:
       - "8000:8000"
-      - "9001:9000"
+      - "9002:9000"
       - "5173:5173"
     working_dir: /var/www/laravel-app
     environment:
