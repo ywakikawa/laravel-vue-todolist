@@ -1,12 +1,8 @@
 開発手順(詳細は省く)
 
- **コンテナへの入る**
 
-    ```bash
-    docker compose exec app bash
-    ```
 
-**バックエンド側の開発**
+1. **バックエンド側の開発**
 
     - **モデルの作成**
 
@@ -65,18 +61,23 @@
 
     - **Modelのfillableを編集**
 
- **フロントエンド側の開発**
+2. **フロントエンド側の開発**
 
     - **TodoList.vueの作成**
 
         手動で作成してください。お手本の画面を見ながら、templateだけ実装します。
 
     - **todo作成機能の実装**
+      fetchTodos methodを実装
 
     - **todo一覧機能の実装**
+      addTodoを実装
 
     - **todo削除機能の実装**
+      deleteTodoを実装
 
     - **todo更新機能の実装**
+      updateTodoを実装
 
     - **UpdateModal.vueの作成**
+      
