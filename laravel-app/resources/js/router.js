@@ -4,19 +4,9 @@ const routes = []
 
 routes.push(
     {
-        path: '/login',
-        name: 'login',
-        component: () => import('Login.vue'),
-    },
-    {
-        path: '/register',
-        name: 'register',
-        component: () => import('Register.vue'),
-    },
-    {
         path: '/todo',
         name: 'todo',
-        component: () => import('Todo.vue'),
+        component: () => import('TodoList.vue'),
     },
 )
 
