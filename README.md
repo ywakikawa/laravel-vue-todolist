@@ -46,25 +46,34 @@
     docker compose exec app bash
     ```
 
-8. **環境ファイルの作成**
+8. composerのインストール
+    ```bash
+    composer install
+    ```
+9. **環境ファイルの作成**
 
     ```bash
     cp .env.example .env
     ```
 
-9. **フロントエンドの起動**
+10. **フロントエンドの起動**
 
     ```bash
+    npm install
     npm run dev
     ```
 
-10. **バックエンドの起動**
+11. **アプリケーションキーの作成**.
+    ```bash
+    php artisan key:generate
+    ```
+12. **バックエンドの起動**
 
     ```bash
     php artisan serve --host=0.0.0.0 --port=8000
     ```
 
-11. **アクセス先**
+13. **アクセス先**
 
     ブラウザで以下のURLにアクセスする
 
