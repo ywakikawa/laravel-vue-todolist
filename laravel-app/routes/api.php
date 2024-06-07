@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\TodoController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +15,4 @@ use app\Http\Controllers\TodoController;
 |
 */
 
-Route::resource('/todo', TodoController::class);
+Route::apiResource('/todo', TodoController::class);

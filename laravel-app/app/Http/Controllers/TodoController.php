@@ -2,55 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use app\Models\Todo;
+use App\Models\Todo;
 
 class TodoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() :JsonResponse//get
     {
-        //
+        $todos = Todo::all();
+        return response()->json($todos);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) //post
     {
-        //
+        $todo = Todo::create($request->all());
+        return response()->json($todo, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id) //put
     {
         //
     }
@@ -58,7 +49,7 @@ class TodoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) //delete
     {
         //
     }
