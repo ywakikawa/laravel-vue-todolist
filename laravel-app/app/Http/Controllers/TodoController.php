@@ -43,14 +43,19 @@ class TodoController extends Controller
      */
     public function update(Request $request, string $id) //put
     {
-        //
+        $todo = Todo::findOrFail($id);
+        $todo->update($request->all());
+        return response()->json($todo, 200);
+//        $todo = Todo::where('id', $id)->update($request->all());
+//        return response()->json($todo, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) //delete
+    public function destroy(string $id): JsonResponse
     {
-        //
+        Todo::findOrFail($id)->delete(); //vueから持ってきたidを見つけてきて削除
+        return response()->json(null, 204); //メッセージを返しているだけ
     }
 }
