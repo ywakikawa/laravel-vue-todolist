@@ -7,7 +7,7 @@
             <input type="checkbox" v-model="showCompleted">完了したTODOも表示する
         </div>
         <ul>
-            <li v-for="todo in todos" :key="todo.id">
+            <li v-for="todo in filteredTodos" :key="todo.id">
                 {{ todo.title }}
                 <button @click="editTodo(todo)">編集</button>
                 <button @click="deleteTodo(todo.id)">削除</button>
@@ -35,10 +35,30 @@ export default {
             title: '',
             showModal: false,
             currentTodo: null,
+            //チェックボックスの状態
+            showCompleted: false
         };
     },
     created() {
         this.fetchTodos();
+    },
+    watch: {
+        //チェックボックスの値の変化を監視する
+        showCompleted() {
+            this.fetchTodos();
+        }
+    },
+    computed: {
+        filteredTodos() {
+            //チェックボックスの値によって表示するTODOを変更する
+            if (this.showCompleted) {
+                //完了したTODOを含めて全てを返す
+                return this.todos;
+            } else {
+                //完了していないTODOのみ返す
+                return this.todos.filter(todo => !todo.completed);
+            }
+        }
     },
     methods: {
         async fetchTodos() {
