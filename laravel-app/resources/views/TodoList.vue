@@ -3,6 +3,9 @@
         <h1>Todo List</h1>
         <input v-model="title" placeholder="追加" @keyup.enter="addTodo">
         <button @click="addTodo">追加</button>
+        <div>
+            <input type="checkbox" v-model="showCompleted">完了したTODOも表示する
+        </div>
         <ul>
             <li v-for="todo in todos" :key="todo.id">
                 {{ todo.title }}
@@ -15,6 +18,7 @@
             :todo="currentTodo"
             @close="showModal = false"
             @update="updateTodo"
+            @completed="completedTodo"
         />
     </div>
 </template>
@@ -77,6 +81,15 @@ export default {
                 this.showModal = false;
             } catch (error) {
                 console.error('更新エラー:', error);
+            }
+        },
+        async completedTodo(completedTodo) {
+            try {
+                const response = await axios.put(`/api/todo/${completedTodo.id}/completed`);
+                const index = this.todos.findIndex(todo => todo.id === completedTodo.id);
+                this.todos.splice(index, 1, response.data);
+            } catch (error) {
+                console.error('完了エラー:', error);
             }
         }
     }

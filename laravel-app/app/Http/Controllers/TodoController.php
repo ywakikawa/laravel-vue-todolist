@@ -32,4 +32,11 @@ class TodoController extends Controller
         Todo::findOrFail($id)->delete();
         return response()->json(null, 204);
     }
+
+    public function completed(string $id):JsonResponse
+    {
+        $todo = Todo::findOrFail($id);
+        $todo->update(['completed' => true]);
+        return response()->json($todo, 200);
+    }
 }

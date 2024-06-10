@@ -5,6 +5,7 @@
             <h2>Todoを更新</h2>
             <input v-model="localTodo.title" placeholder="Update todo">
             <button @click="update">更新</button>
+            <button @click="completed">完了</button>
         </div>
     </div>
 </template>
@@ -20,7 +21,10 @@ export default {
     methods: {
         update() {
             this.$emit('update', this.localTodo);
-        }
+        },
+        completed() {
+            this.$emit('completed', this.localTodo);
+        },
     }
 };
 </script>
