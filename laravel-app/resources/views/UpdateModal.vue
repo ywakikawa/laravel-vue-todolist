@@ -5,6 +5,7 @@
             <h2>Todoを更新</h2>
             <input v-model="localTodo.title" placeholder="Update todo">
             <button @click="update">更新</button>
+            <button @click="completed">完了</button>
         </div>
     </div>
 </template>
@@ -20,6 +21,9 @@ export default {
     methods: {
         update() { //更新処理
             this.$emit('update', this.localTodo); //$emitで親要素の関数を呼び出す。親のTodoListに入っているupdateを呼び出してる
+        },
+        completed() {
+            this.$emit('completed', this.localTodo);
         }
     }
 }

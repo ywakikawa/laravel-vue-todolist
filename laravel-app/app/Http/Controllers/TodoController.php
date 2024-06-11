@@ -11,7 +11,7 @@ class TodoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() :JsonResponse//get
+    public function index(): JsonResponse//get
     {
         $todos = Todo::all();
         return response()->json($todos);
@@ -57,5 +57,12 @@ class TodoController extends Controller
     {
         Todo::findOrFail($id)->delete(); //vueから持ってきたidを見つけてきて削除
         return response()->json(null, 204); //メッセージを返しているだけ
+    }
+
+    public function completed(string $id): JsonResponse
+    {
+        $todo = Todo::findOrFail($id);
+        $todo->update(['completed' => true]);
+        return response()->json($todo, 200);
     }
 }
